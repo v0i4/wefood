@@ -20,6 +20,8 @@ defmodule WefoodWeb.Router do
     get "/", PageController, :index
   end
 
+  # coveralls-ignore-start
+
   # Other scopes may use custom stacks.
   # scope "/api", WefoodWeb do
   #   pipe_through :api
@@ -53,4 +55,6 @@ defmodule WefoodWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
+
+  # coveralls-ignore-stop
 end
