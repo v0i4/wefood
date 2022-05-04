@@ -1,6 +1,70 @@
 /* This file is for your main application CSS */
 /*@import "./phoenix.css";*/
 
+:root {
+  --primary: #ff761a;
+  --primary-hover: #d66316;
+  --secondary: #ffc82a;
+  --third: #f8f8f8f8;
+  --pure: #fff;
+  --dark: #0c0c0c;
+  --gray: #ccc;
+  --smooth: all 0.3s ease-in-out;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  --webkit-font-smoothing: antialiased;
+  color: var(--dark);
+}
+
+nav li:last-child a {
+  background-color: var(--primary);
+  color: var(--pure);
+}
+
+nav li:last-child a:hover {
+  background-color: var(--secondary);
+  color: var(--pure);
+}
+
+nav li a {
+  transition: var(--smooth);
+}
+
+nav li a:hover {
+  color: var(--primary);
+}
+
+section.hero {
+  background: var(--third);
+}
+
+.size {
+  background: var(--third);
+}
+
+.add-to-cart {
+  border-color: 2px solid var(--primary);
+  color: var(--primary);
+  transition: var(--smooth);
+}
+
+.add-to-cart:hover {
+  border-color: 2px solid var(--secondary);
+  background: var(--primary);
+  color: var(--pure);
+}
+
+.btn-primery{
+  background: var(--primary);
+  transition: var(--smooth);
+}
+
+.btn-primery:hover{
+  background-color: var(--primary-hover);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -50,12 +114,12 @@
   transition: opacity 1s ease-out;
 }
 
-.phx-loading{
+.phx-loading {
   cursor: wait;
 }
 
 .phx-modal {
-  opacity: 1!important;
+  opacity: 1 !important;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -63,7 +127,7 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .phx-modal-content {
@@ -103,22 +167,42 @@
   animation: 0.2s ease-out 0s normal forwards 1 fade-out-keys;
 }
 
-@keyframes fade-in-scale-keys{
-  0% { scale: 0.95; opacity: 0; }
-  100% { scale: 1.0; opacity: 1; }
+@keyframes fade-in-scale-keys {
+  0% {
+    scale: 0.95;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
 }
 
-@keyframes fade-out-scale-keys{
-  0% { scale: 1.0; opacity: 1; }
-  100% { scale: 0.95; opacity: 0; }
+@keyframes fade-out-scale-keys {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  100% {
+    scale: 0.95;
+    opacity: 0;
+  }
 }
 
-@keyframes fade-in-keys{
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes fade-in-keys {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-@keyframes fade-out-keys{
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+@keyframes fade-out-keys {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
