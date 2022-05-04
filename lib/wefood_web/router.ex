@@ -17,7 +17,7 @@ defmodule WefoodWeb.Router do
   scope "/", WefoodWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", MainLive, :index
   end
 
   # coveralls-ignore-start
