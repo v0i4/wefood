@@ -1,9 +1,9 @@
 <section class="ml-20 menu container py-8 w-full" id={@id}>
-    <h1 class="text xl font-bold mb-8 ">All foods</h1>
+    <h1 class="text xl font-bold mb-8" data-role="items-info" data-id="all-food">All foods</h1>
     <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16">
 
 <%= for i <- 0..10 do %>
-     <.live_component module={Item} id={"item" <> Integer.to_string(i)} />
+     <.live_component module={Item} id={"item-" <> Integer.to_string(i)} />
 
       <% end %>
 
