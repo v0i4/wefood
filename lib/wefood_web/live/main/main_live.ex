@@ -1,4 +1,5 @@
 defmodule WefoodWeb.MainLive do
+  @moduledoc false
   use WefoodWeb, :live_view
   alias WefoodWeb.MainLive.Hero
   alias WefoodWeb.MainLive.Items
