@@ -1,4 +1,5 @@
 defmodule WefoodWeb.Main.ItemsTest do
+  @moduledoc false
   use WefoodWeb.ConnCase
   import Phoenix.LiveViewTest
 
