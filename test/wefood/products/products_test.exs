@@ -15,6 +15,5 @@ defmodule Wefood.ProductsTest do
     assert product.size == payload.size
     assert product.price == payload.price
     assert product.name == payload.name
-
   end
 end

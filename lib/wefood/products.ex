@@ -9,5 +9,4 @@ defmodule Wefood.Products do
     |> Product.changeset()
     |> Repo.insert()
   end
-
 end

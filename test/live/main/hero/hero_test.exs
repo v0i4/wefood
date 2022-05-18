@@ -1,5 +1,4 @@
 defmodule WefoodWeb.Main.HeroTest do
-
   @moduledoc false
   use WefoodWeb.ConnCase
   import Phoenix.LiveViewTest

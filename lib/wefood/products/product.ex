@@ -9,12 +9,12 @@ defmodule Wefood.Products.Product do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_tipe :binary_id
   schema "products" do
-      field :name, :string
-      field :price, :integer
-      field :size, :string
-      field :description, :string
+    field :name, :string
+    field :price, :integer
+    field :size, :string
+    field :description, :string
 
-      timestamps()
+    timestamps()
   end
 
   def changeset(attrs) do
