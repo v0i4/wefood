@@ -1,4 +1,5 @@
 defmodule Wefood.ProductsTest do
+  @moduledoc false
   use Wefood.DataCase
   alias Wefood.Products
   alias Wefood.Products.Product
