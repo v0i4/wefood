@@ -23,6 +23,5 @@ defmodule Wefood.ProductsTest do
     assert {:error, changeset} = Products.create_product(payload)
     assert "has already been taken" in errors_on(changeset).name
     assert %{name: ["has already been taken"]} = errors_on(changeset)
-
   end
 end
