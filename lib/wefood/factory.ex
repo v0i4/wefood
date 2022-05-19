@@ -1,4 +1,5 @@
 defmodule Wefood.Factory do
+  @moduledoc false
   use ExMachina.Ecto, repo: Wefood.Repo
   alias Wefood.Products.Product
 

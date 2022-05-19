@@ -1,4 +1,5 @@
 defmodule Wefood.ProductFixtures do
+  @moduledoc false
   alias Wefood.Products
 
   def product_fixtures(attrs \\ %{}) do

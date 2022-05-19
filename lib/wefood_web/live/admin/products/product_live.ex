@@ -1,4 +1,5 @@
 defmodule WefoodWeb.Admin.ProductLive do
+  @moduledoc false
   use WefoodWeb, :live_view
   alias Wefood.Products
 
