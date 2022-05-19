@@ -18,6 +18,10 @@ defmodule WefoodWeb.Router do
     pipe_through :browser
 
     live "/", MainLive, :index
+
+    scope "/admin", Admin, as: :admin do
+      live "products", ProductLive, :index
+    end
   end
 
   # coveralls-ignore-start
