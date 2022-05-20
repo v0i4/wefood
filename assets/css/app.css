@@ -56,13 +56,13 @@ section.hero {
   color: var(--pure);
 }
 
-.btn-primery{
-  background: var(--primary);
+.btn-primary{
+  background: var(--primary) !important;
   transition: var(--smooth);
 }
 
-.btn-primery:hover{
-  background-color: var(--primary-hover);
+.btn-primary:hover{
+  background-color: var(--primary-hover) !important;
 }
 
 @tailwind base;
