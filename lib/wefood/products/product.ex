@@ -10,7 +10,7 @@ defmodule Wefood.Products.Product do
   @foreign_key_tipe :binary_id
   schema "products" do
     field :name, :string
-    field :price, :integer
+    field :price, Money.Ecto.Amount.Type
     field :size, :string
     field :description, :string
 
