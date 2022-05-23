@@ -10,6 +10,8 @@ import Config
 config :wefood,
   ecto_repos: [Wefood.Repo]
 
+config :money, default_currency: :BRL
+
 # Configures the endpoint
 config :wefood, WefoodWeb.Endpoint,
   url: [host: "localhost"],
