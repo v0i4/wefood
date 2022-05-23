@@ -6,7 +6,7 @@ defmodule WefoodWeb.LiveHelpers do
     ~H"""
 
     <div class="phx-modal fade-in bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    <div class="phx-modal-content fade-in-scale">
+    <div class="phx-modal-content fade-in-scale" data-role="modal">
     <%= render_slot(@inner_block) %>
 
     </div>
