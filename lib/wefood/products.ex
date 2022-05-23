@@ -1,4 +1,5 @@
 defmodule Wefood.Products do
+  @moduledoc false
   alias Wefood.Products.Product
   alias Wefood.Repo
 

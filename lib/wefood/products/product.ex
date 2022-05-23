@@ -1,4 +1,5 @@
 defmodule Wefood.Products.Product do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
   alias Wefood.Repo
