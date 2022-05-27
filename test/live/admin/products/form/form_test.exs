@@ -8,7 +8,6 @@ defmodule WefoodWeb.Admin.Products.FormTest do
   test "load modal to insert product", %{conn: conn} do
     {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
 
-
     assert has_element?(view, "[data-role=modal]")
     assert has_element?(view, "[data-role=product-form]")
 
@@ -16,7 +15,6 @@ defmodule WefoodWeb.Admin.Products.FormTest do
            |> form("#new_product_form", product: %{name: nil})
            |> render_change() =~ "can&#39;t be blank"
   end
-
 
   test "given a product, when submit a form, returns a created product message", %{conn: conn} do
     {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))

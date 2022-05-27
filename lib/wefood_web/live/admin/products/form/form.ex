@@ -21,7 +21,6 @@ defmodule WefoodWeb.Admin.Products.Form do
       |> Map.put(:action, :validate)
 
     {:noreply, assign(socket, :changeset, changeset)}
-
   end
 
   def handle_event("save", %{"product" => product_params}, socket) do
