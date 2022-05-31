@@ -23,6 +23,7 @@ defmodule WefoodWeb.Router do
       live "products", ProductLive, :index
       live "products/new", ProductLive, :new
       live "products/:id/edit", ProductLive, :edit
+      live "products/:id/delete", ProductLive, :delete
     end
   end
 

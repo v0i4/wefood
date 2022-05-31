@@ -43,4 +43,12 @@ defmodule Wefood.ProductsTest do
     assert product.price == %Money{amount: 100, currency: :BRL}
     assert product.name == "abobora"
   end
+
+  test "delete/1" do
+    payload = %{name: "pizza", size: "XL", price: 100, description: "margherita"}
+    assert {:ok, %Product{} = product} = Products.create_product(payload)
+
+    {:ok, %Product{}} = Products.delete(product.id)
+    assert_raise Ecto.NoResultsError, fn -> Products.get!(product.id) end
+  end
 end
