@@ -31,4 +31,18 @@ defmodule WefoodWeb.Admin.ProductLiveTest do
              "[data-role=product-item][data-id=#{product.id}]"
            )
   end
+
+  test "given a existent product, when click to delete, then remove product from db and update page",
+       %{conn: conn} do
+    product = insert(:product)
+    {:ok, view, html} = live(conn, Routes.admin_product_path(conn, :index))
+
+    assert has_element?(view, "[data-role=delete][data-id=#{product.id}]", "Delete")
+
+    assert view
+           |> element("[data-role=delete][data-id=#{product.id}]", "Delete")
+           |> render_click()
+
+    refute has_element?(view, "[data-role=delete][data-id=#{product.id}]")
+  end
 end

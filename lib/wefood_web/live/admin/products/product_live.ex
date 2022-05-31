@@ -34,4 +34,9 @@ defmodule WefoodWeb.Admin.ProductLive do
     |> assign(:page_title, "edit product")
     |> assign(:product, product)
   end
+
+  def handle_event("delete", %{"id" => id}, socket) do
+    {:ok, _} = Products.delete(id)
+    {:noreply, assign(socket, :products, Products.list_products())}
+  end
 end
