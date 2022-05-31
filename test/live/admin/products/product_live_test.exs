@@ -28,8 +28,7 @@ defmodule WefoodWeb.Admin.ProductLiveTest do
 
     assert has_element?(
              view,
-             "[data-role=product-item][data-id=#{product.id}]",
-             "Show | Edit | Delete"
+             "[data-role=product-item][data-id=#{product.id}]"
            )
   end
 end
