@@ -6,93 +6,99 @@ defmodule WefoodWeb.Admin.Products.FormTest do
   alias Wefood.Products.Product
   alias Wefood.Products
 
-  test "load modal to insert product", %{conn: conn} do
-    {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
+  describe "test product" do
+    setup :register_and_log_in_user
 
-    open_modal(view)
+    test "load modal to insert product", %{conn: conn} do
+      {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
 
-    assert has_element?(view, "[data-role=modal]")
-    assert has_element?(view, "[data-role=product-form]")
+      open_modal(view)
 
-    assert view
-           |> form("#new", product: %{name: nil})
-           |> render_change() =~ "can&#39;t be blank"
-  end
+      assert has_element?(view, "[data-role=modal]")
+      assert has_element?(view, "[data-role=product-form]")
 
-  test "given a product, when submit a form, returns a created product message", %{conn: conn} do
-    {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
-    open_modal(view)
+      assert view
+             |> form("#new", product: %{name: nil})
+             |> render_change() =~ "can&#39;t be blank"
+    end
 
-    payload = %{name: "pumpking", description: "desc", price: 10, size: "XL"}
+    test "given a product, when submit a form, returns a created product message", %{conn: conn} do
+      {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
+      open_modal(view)
 
-    {:ok, _, html} =
-      view
-      |> form("#new", product: payload)
-      |> render_submit()
-      |> follow_redirect(conn, Routes.admin_product_path(conn, :index))
+      payload = %{name: "pumpking", description: "desc", price: 10, size: "XL"}
 
-    assert html =~ "Product has created.."
-    assert html =~ "pumpking"
-  end
+      {:ok, _, html} =
+        view
+        |> form("#new", product: payload)
+        |> render_submit()
+        |> follow_redirect(conn, Routes.admin_product_path(conn, :index))
 
-  test "test close modal", %{conn: conn} do
-    {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
-    open_modal(view)
-    assert view |> has_element?("#modal")
+      assert html =~ "Product has created.."
+      assert html =~ "pumpking"
+    end
 
-    assert =
-      view
-      |> element("[data-role=add-new-product]", "New")
-      |> render_click()
-  end
+    test "test close modal", %{conn: conn} do
+      {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
+      open_modal(view)
+      assert view |> has_element?("#modal")
 
-  test "given a product that already exists, when click to edit, open modal and execute action",
-       %{conn: conn} do
-    product = insert(:product)
-    {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
+      assert =
+        view
+        |> element("[data-role=add-new-product]", "New")
+        |> render_click()
+    end
 
-    assert view |> element("[data-role=edit-product][data-id=#{product.id}]") |> render_click()
-    assert view |> has_element?("#modal")
-    assert_patch(view, Routes.admin_product_path(conn, :edit, product))
+    test "given a product that already exists, when click to edit, open modal and execute action",
+         %{conn: conn} do
+      product = insert(:product)
+      {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
 
-    assert view
-           |> form("##{product.id}", product: %{name: nil})
-           |> render_change() =~ "can&#39;t be blank"
+      assert view |> element("[data-role=edit-product][data-id=#{product.id}]") |> render_click()
+      assert view |> has_element?("#modal")
+      assert_patch(view, Routes.admin_product_path(conn, :edit, product))
 
-    {:ok, view, html} =
-      view
-      |> form("##{product.id}", product: %{name: "abobora"})
-      |> render_submit()
-      |> follow_redirect(conn, Routes.admin_product_path(conn, :index))
+      assert view
+             |> form("##{product.id}", product: %{name: nil})
+             |> render_change() =~ "can&#39;t be blank"
 
-    assert html =~ "Product updated!"
-    assert view |> has_element?("[data-role=product-item-name][data-id=#{product.id}]", "abobora")
-  end
+      {:ok, view, html} =
+        view
+        |> form("##{product.id}", product: %{name: "abobora"})
+        |> render_submit()
+        |> follow_redirect(conn, Routes.admin_product_path(conn, :index))
 
-  test "given a product that already exists, when click try to update without informations resturn error",
-       %{conn: conn} do
-    product = insert(:product)
-    {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
+      assert html =~ "Product updated!"
 
-    assert view |> element("[data-role=edit-product][data-id=#{product.id}]") |> render_click()
-    assert_patch(view, Routes.admin_product_path(conn, :edit, product))
+      assert view
+             |> has_element?("[data-role=product-item-name][data-id=#{product.id}]", "abobora")
+    end
 
-    assert view
-           |> form("##{product.id}", product: %{name: nil})
-           |> render_submit() =~ "can&#39;t be blank"
-  end
+    test "given a product that already exists, when click try to update without informations resturn error",
+         %{conn: conn} do
+      product = insert(:product)
+      {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
 
-  test "given a product with a same name, when submit a form, returns an changeset error message",
-       %{conn: conn} do
-    {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
-    open_modal(view)
+      assert view |> element("[data-role=edit-product][data-id=#{product.id}]") |> render_click()
+      assert_patch(view, Routes.admin_product_path(conn, :edit, product))
 
-    payload = %{name: "pumpking", description: "desc", price: 10, size: "XL"}
-    assert {:ok, %Product{}} = Products.create_product(payload)
+      assert view
+             |> form("##{product.id}", product: %{name: nil})
+             |> render_submit() =~ "can&#39;t be blank"
+    end
 
-    assert view
-           |> form("#new", product: payload)
-           |> render_submit() =~ "has already been taken"
+    test "given a product with a same name, when submit a form, returns an changeset error message",
+         %{conn: conn} do
+      {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
+      open_modal(view)
+
+      payload = %{name: "pumpking", description: "desc", price: 10, size: "XL"}
+      assert {:ok, %Product{}} = Products.create_product(payload)
+
+      assert view
+             |> form("#new", product: payload)
+             |> render_submit() =~ "has already been taken"
+    end
   end
 
   defp open_modal(view) do

@@ -4,6 +4,10 @@ defmodule WefoodWeb.Admin.ProductLiveTest do
   import Phoenix.LiveViewTest
   import Wefood.Factory
 
+  describe "test default page product" do
+    setup :register_and_log_in_user
+
+
   test "load page", %{conn: conn} do
     product = insert(:product)
     {:ok, view, html} = live(conn, Routes.admin_product_path(conn, :index))
@@ -45,4 +49,5 @@ defmodule WefoodWeb.Admin.ProductLiveTest do
 
     refute has_element?(view, "[data-role=delete][data-id=#{product.id}]")
   end
+end
 end
