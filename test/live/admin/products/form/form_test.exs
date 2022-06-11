@@ -1,4 +1,5 @@
 defmodule WefoodWeb.Admin.Products.FormTest do
+  @moduledoc false
   use WefoodWeb.ConnCase
   import Phoenix.LiveViewTest
   import Wefood.Factory
@@ -7,7 +8,7 @@ defmodule WefoodWeb.Admin.Products.FormTest do
   alias Wefood.Products
 
   describe "test product" do
-    setup :register_and_log_in_user
+    setup :register_and_log_in_admin
 
     test "load modal to insert product", %{conn: conn} do
       {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :index))
