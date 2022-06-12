@@ -2,7 +2,9 @@ defmodule Wefood.Products.Product do
   @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
+  import Waffle.Ecto.Schema
   alias Wefood.Products.Product
+  alias Wefood.Products.ProductImage
   alias Wefood.Repo
 
   @fields ~w/description/a
@@ -14,6 +16,7 @@ defmodule Wefood.Products.Product do
     field :price, Money.Ecto.Amount.Type
     field :size, :string
     field :description, :string
+    field :product_url, ProductImage.Type
 
     timestamps()
   end
@@ -25,6 +28,7 @@ defmodule Wefood.Products.Product do
   def changeset(%Product{} = product, attrs) do
     product
     |> cast(attrs, @fields ++ @required_fields)
+    |> cast_attachments(attrs, [:product_url])
     |> validate_required(@required_fields)
     |> unique_constraint(:name)
   end
