@@ -4,6 +4,9 @@ defmodule WefoodWeb.Admin.Products.Form do
   alias Wefood.Products
   alias Wefood.Products.Product
 
+  @upload_configs [accept: ~w/.png .jpeg .jpg/, max_entries: 1, max_file_size: 10_000_000]
+
+
   def update(%{product: product} = assigns, socket) do
     changeset = Products.change_product(product)
 
@@ -11,6 +14,7 @@ defmodule WefoodWeb.Admin.Products.Form do
      socket
      |> assign(assigns)
      |> assign(changeset: changeset)
+     |> allow_upload(:photo, @upload_configs)
      |> assign(product: product)}
   end
 
@@ -26,6 +30,10 @@ defmodule WefoodWeb.Admin.Products.Form do
   def handle_event("save", %{"product" => product_params}, socket) do
     action = socket.assigns.action
     save(socket, action, product_params)
+  end
+
+  def handle_event("cancel", %{"ref" => ref}, socket) do
+    {:noreply, cancel_upload(socket, :photo, ref)}
   end
 
   def save(socket, :edit, product_params) do
