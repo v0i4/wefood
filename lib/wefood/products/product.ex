@@ -2,8 +2,8 @@ defmodule Wefood.Products.Product do
   @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
-  alias Wefood.Repo
   alias Wefood.Products.Product
+  alias Wefood.Repo
 
   @fields ~w/description/a
   @required_fields ~w/name price size/a

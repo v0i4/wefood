@@ -6,7 +6,6 @@ defmodule WefoodWeb.Admin.Products.Form do
 
   @upload_configs [accept: ~w/.png .jpeg .jpg/, max_entries: 1, max_file_size: 10_000_000]
 
-
   def update(%{product: product} = assigns, socket) do
     changeset = Products.change_product(product)
 

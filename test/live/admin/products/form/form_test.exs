@@ -4,8 +4,8 @@ defmodule WefoodWeb.Admin.Products.FormTest do
   import Phoenix.LiveViewTest
   import Wefood.Factory
 
-  alias Wefood.Products.Product
   alias Wefood.Products
+  alias Wefood.Products.Product
 
   describe "test product" do
     setup :register_and_log_in_admin
@@ -78,23 +78,28 @@ defmodule WefoodWeb.Admin.Products.FormTest do
     test "should cancel upload", %{conn: conn} do
       {:ok, view, _html} = live(conn, Routes.admin_product_path(conn, :new))
 
-      upload = file_input(view, "#new", :photo, [
-        %{
-          last_modified: 1_594_171_879_000,
-          name: "myfile.jpeg",
-          content: "   ",
-          type: "image/jpeg"
-        }
-      ])
+      upload =
+        file_input(view, "#new", :photo, [
+          %{
+            last_modified: 1_594_171_879_000,
+            name: "myfile.jpeg",
+            content: "   ",
+            type: "image/jpeg"
+          }
+        ])
 
       assert render_upload(upload, "myfile.jpeg", 100) =~ "100%"
-      assert has_element?(view, "[data-role=image-loaded][data-id=#{hd(upload.entries)["ref"]}]", "100")
 
-      ref =  "[data-role=cancel][data-id=#{hd(upload.entries)["ref"]}]"
+      assert has_element?(
+               view,
+               "[data-role=image-loaded][data-id=#{hd(upload.entries)["ref"]}]",
+               "100"
+             )
+
+      ref = "[data-role=cancel][data-id=#{hd(upload.entries)["ref"]}]"
       assert has_element?(view, ref)
       assert element(view, ref) |> render_click()
       refute has_element?(view, ref)
-
     end
 
     test "given a product that already exists, when click try to update without informations resturn error",

@@ -6,7 +6,7 @@ defmodule Wefood.Accounts do
   import Ecto.Query, warn: false
   alias Wefood.Repo
 
-  alias Wefood.Accounts.{User, UserToken, UserNotifier}
+  alias Wefood.Accounts.{User, UserNotifier, UserToken}
 
   ## Database getters
 
