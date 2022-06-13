@@ -63,21 +63,26 @@ defmodule WefoodWeb.Admin.Products.Form do
   end
 
   defp build_photo_to_upload(socket, product_params) do
-    [file_upload | _] =
-      consume_uploaded_entries(socket, :photo, fn %{path: path}, entry ->
-        file_name = get_file_name(entry)
-        dest = Path.join("/tmp", file_name)
-        File.cp!(path, dest)
+    socket
+    |> consume_uploaded_entries(:photo, fn %{path: path}, entry ->
+      file_name = get_file_name(entry)
+      dest = Path.join("/tmp", file_name)
+      File.cp!(path, dest)
 
-        %Plug.Upload{
-          content_type: entry.client_type,
-          filename: entry.client_name,
-          path: dest
-        }
+      %Plug.Upload{
+        content_type: entry.client_type,
+        filename: entry.client_name,
+        path: dest
+      }
 
-        {:ok, "/tmp/abobora"}
-      end)
+      {:ok, "/tmp/abobora"}
+    end)
+    |> add_file_upload(product_params)
+  end
 
+  defp add_file_upload([], product_params), do: product_params
+
+  defp add_file_upload([file_upload | _], product_params) do
     Map.put(product_params, "product_url", file_upload)
   end
 
