@@ -90,7 +90,7 @@ defmodule Wefood.ProductsTest do
       product_url: file_upload
     }
 
-   assert {:error, changeset} = Products.create_product(payload)
-   assert "file type is invalid" in errors_on(changeset).product_url
+    assert {:error, changeset} = Products.create_product(payload)
+    assert "file type is invalid" in errors_on(changeset).product_url
   end
 end
