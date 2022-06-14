@@ -69,13 +69,13 @@ defmodule WefoodWeb.Admin.Products.Form do
       dest = Path.join("/tmp", file_name)
       File.cp!(path, dest)
 
-      %Plug.Upload{
+      file_upload = %Plug.Upload{
         content_type: entry.client_type,
         filename: entry.client_name,
         path: dest
       }
 
-      {:ok, "/tmp/abobora"}
+      {:ok, file_upload}
     end)
     |> add_file_upload(product_params)
   end

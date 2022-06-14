@@ -21,6 +21,13 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
+  config :waffle,
+    storage: Waffle.Storage.Google.CloudStorage,
+    bucket: System.get_env("GCP_BUCKET")
+
+  config :goth,
+    json: System.get_env("GCP_KEY")
+
   database_url =
     System.get_env("DATABASE_URL") ||
       raise """
