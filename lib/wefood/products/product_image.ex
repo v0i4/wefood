@@ -16,6 +16,6 @@ defmodule Wefood.Products.ProductImage do
   end
 
   def storage_dir(_, {file, product}) do
-    "priv/static/uploads/products/#{product.name}"
+    "products/#{product.name}"
   end
 end
