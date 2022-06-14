@@ -82,5 +82,13 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
-config :waffle,
-  storage: Waffle.Storage.Local
+ config :waffle,
+  storage: Waffle.Storage.Local,
+  storage_dir: "priv/static/uploads/"
+
+#config :waffle,
+#  storage: Waffle.Storage.Google.CloudStorage,
+#  bucket: "wefood-app"
+
+#config :goth,
+#  json: File.read!("gcp.json")

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "elated-chariot-353222",
+  "private_key_id": "ca323c7d3ae65b8c7c8c0733407b1347a061ec76",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCiswUzTIwbCCig\nFzbEPNxVT7xWSPlgA8nCd2bp3lIJjrmm22GLLa3LBU3mNM2EPlTKuvg1GrmauaXw\nLnl8aEWm1X8RwdU3s9CMzr1x74DsliLe6oeuLVIkX+0Sn7TdbGvM2Gngjqys9LOr\ndps0BHKIQNS2/sOrmBV3qT4opqTTBpDTC7H0ySpusGDb4iviV0tcJnSwY1sRYrVV\n2yrkZmUdO9s73473xmT5stY3soC3QY/w75FJYiwW0g0hHyHwRV+0sNwfvs4PM3s3\nZhX8kmhb1rXEuLQkCcA6Px4xfr25EV4pLfShXF8Rm6ORqdueSLczgTzplhnvtD6e\njRfMONWnAgMBAAECggEAF3SHg2W9rQf4E1xFYPUFLqdYF3hduyHQrGBaTcznNsmE\nqjFmVpI3Q9V37YAfQLlbr/5UWhOIPm4VJhMNIIpHwE13DDBNdMJPhn0ngo1soK7k\nSA63kLyn4uaRXuX3RRSkVdu9J8ppymVcoZNvvIgHmuz9vYPs4YgDUETt2R5tFJ7a\ny/KOIGRgwnmgcMZibz1XMGW01j4ixym0ETTmlfW0Dp5PjAxvJm/3nNORkCucsvKN\nbaoIvCjVa5JgmfoQP9H0tqqWufg29F2o6sG2hZEQrPOn7d1bPeXHQ0wQ3bnxQEfS\n3j35CaioNcLv8apQO1jtGJCVdZWhsYm++OUhwuB9gQKBgQDVFstC1kFDgNHIP6+h\nT4AZIWHRk546uVvjTr+Xnfv3UmIAWCdWXWVV5E8Pv4LxplztrHdScNe6/6k2o0z+\nsh5gRrZnsGvj85u8iK4aRHuJExCMdsyJRtVDpf1AT6SvFHsaY/sWsW8q1ljtEvIG\nmpU3V961uIaVJ67DByDm0PX5CQKBgQDDdoZkonkhfKc97+aWIGUA3ksbT2mfqIq+\nOSeAxcHyjXE1AAINLBHGjdM8gV3QkXSOUbT7spB36Ff6ykRQD+vqK3NDigPFIi/8\n4gVVesGDpW6sMIQXDN2kAFVDR6fLmicyDEZlNXZdrTGmi+Eu0ZjTRbIwUX3fMe0w\n897JzQd1LwKBgBTvm2LiuCDQvEvHbhMUQ4q0i+7SaR5t7chEiXB1Fjdzgat0/dBv\ndrBcsSPj9hKV/NVhN4wDCD8YNWDn5H21tGRTLkK7w63u1mNMroZoKhcKp3qVhX0L\nV5LA8UPrT0vgYEP0hMvy/PAhhTUtwlfBwl1gpcIG8jofXv1MawAikbg5AoGBAJup\naJ38RjtE6muJAjnM0qM+ZNH7DEL6FoQnQC5tT2e6/M0YlImo7v8RM4ib/fp73Db7\nGwbXzfWwM2CmdIDOLTLwJ3tCDn6QG2dpGJZajIIq3ViDyq4QsPJK0ZwjFJ4wxcY1\nwFoZmYpAw6m+/DYs9WhLuPyB6Zw2Ro8Vp/dOMQJBAoGAA7ktPbmdISkZNWgj1FaS\neuKChwmK/8fT4qZBCoH95qU+UP9qfDiezjyXQsYyR/FeVGW/t4VbaNDoDuPwhbQy\nZR8liGz61umvonpzGjstPt3P7aU0sljUaKFORDDUug9SADAZQT1Ou8+i6Bylxyzq\nnIFGZPos7NmUFW/BV1yny9I=\n-----END PRIVATE KEY-----\n",
+  "client_email": "bucket-wefood-permission@elated-chariot-353222.iam.gserviceaccount.com",
+  "client_id": "105411815974738919889",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bucket-wefood-permission%40elated-chariot-353222.iam.gserviceaccount.com"
+}
