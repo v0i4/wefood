@@ -15,21 +15,7 @@
         </thead>
         <tbody class="bg-white" data-role="product-list">
         <%= for product <- @products do %>
-          <tr class="text-gray-700" data-role="product-item" data-id={product.id}>
-            <td class="px-4 py-3 border" data-role="product-image" data-id={product.id}>
-              <img src={Products.get_image(product)} alt="" style="width: 50px">
-            </td>
-            <td class="px-4 py-3 border" data-role="product-item-name" data-id={product.id}><%= product.name %></td>
-            <td class="px-4 py-3 border" data-role="product-item-price" data-id={product.id}><%= product.price %></td>
-            <td class="px-4 py-3 border" data-role="product-item-size" data-id={product.id}><%= product.size %></td>
-            <td class="px-4 py-3 border" data-role="product-item-actions" data-id={product.id}>
-             <%= live_redirect "Show", to: Routes.admin_product_show_path(@socket, :show, product), "data-role": "show-product", "data-id": product.id, class: "px-3 py-1 rounded-full text-white bg-blue-500" %>
-            |
-             <%= live_patch "Edit", to: Routes.admin_product_path(@socket, :edit, product), "data-role": "edit-product", "data-id": product.id, class: "px-3 py-1 rounded-full text-white font-bold btn_primary" %>
-            |
-            <%= link "Delete", to: "#", phx_click: "delete", phx_value_id: product.id, data: [confirm: "are you sure?"], class: "px-3 py-1 rounded-full text-white font-bold text-white bg-red-500", "data-role": "delete", "data-id": product.id %>
-            </td>
-          </tr>
+          <.live_component module={ProductRow} id={product.id} product={product} />
           <% end %>
         </tbody>
       </table>

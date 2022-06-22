@@ -4,6 +4,7 @@ defmodule WefoodWeb.Admin.ProductLive do
   alias Wefood.Products
   alias Wefood.Products.Product
   alias WefoodWeb.Admin.Products.Form
+  alias WefoodWeb.Admin.Product.ProductRow
 
   def mount(_p, _s, socket) do
     products = Products.list_products()
