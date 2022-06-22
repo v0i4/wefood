@@ -51,7 +51,7 @@ defmodule WefoodWeb.Admin.ProductLive do
 
   def handle_event("filter-by-name", %{"name" => name}, socket) do
     socket = apply_filters(socket, name)
-      {:noreply, socket}
+    {:noreply, socket}
   end
 
   defp apply_filters(socket, name) do

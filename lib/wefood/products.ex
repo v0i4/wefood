@@ -6,8 +6,10 @@ defmodule Wefood.Products do
   import Ecto.Query
 
   def list_products, do: Repo.all(Product)
+
   def list_products(name) do
     name = "%" <> name <> "%"
+
     Product
     |> where([p], ilike(p.name, ^name))
     |> Repo.all()
