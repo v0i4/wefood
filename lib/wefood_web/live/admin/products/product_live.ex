@@ -19,6 +19,7 @@ defmodule WefoodWeb.Admin.ProductLive do
       socket
       |> apply_action(live_action, params)
       |> assign(products: products)
+      |> assign(loading: false)
       |> assign(name: "")
 
     {:noreply, socket}
@@ -54,8 +55,32 @@ defmodule WefoodWeb.Admin.ProductLive do
     {:noreply, socket}
   end
 
+  def handle_info({:list_products, name}, socket) do
+    {:noreply, perform_filter(socket, name)}
+  end
+
   defp apply_filters(socket, name) do
-    products = Products.list_products(name)
-    socket |> assign(products: products, name: name)
+    assigns = [products: [], name: name, loading: true]
+    send(self(), {:list_products, name})
+    assign(socket, assigns)
+  end
+
+  defp perform_filter(socket, name) do
+    name
+    |> Products.list_products()
+    |> return_filter_response(socket, name)
+  end
+
+  defp return_filter_response([] = products, socket, name) do
+    assigns = [loading: false, products: products]
+
+    socket
+    |> put_flash(:info, "no results found for \"#{name}\"..")
+    |> assign(assigns)
+  end
+
+  defp return_filter_response(products, socket, _name) do
+    socket
+    |> assign(products: products, loading: false)
   end
 end
