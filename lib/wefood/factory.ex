@@ -5,10 +5,10 @@ defmodule Wefood.Factory do
 
   def product_factory do
     %Product{
-      description: Faker.Food.description(),
       name: Faker.Food.dish(),
-      price: 100,
-      size: "XL"
+      description: Faker.Food.description(),
+      price: :random.uniform(1000),
+      size: "small"
     }
   end
 end

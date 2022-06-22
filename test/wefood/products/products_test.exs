@@ -70,7 +70,7 @@ defmodule Wefood.ProductsTest do
 
     assert {:ok, %Product{} = product} = Products.create_product(payload)
 
-    url = Products.get_image(product)
+    url = hd(Products.get_image(product))
 
     assert String.contains?(url, file_upload.filename)
   end

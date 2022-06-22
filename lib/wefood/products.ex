@@ -3,8 +3,17 @@ defmodule Wefood.Products do
   alias Wefood.Products.Product
   alias Wefood.Products.ProductImage
   alias Wefood.Repo
+  import Ecto.Query
 
   def list_products, do: Repo.all(Product)
+
+  def list_products(name) do
+    name = "%" <> name <> "%"
+
+    Product
+    |> where([p], ilike(p.name, ^name))
+    |> Repo.all()
+  end
 
   def get!(id), do: Repo.get!(Product, id)
 
