@@ -27,18 +27,5 @@ Accounts.register_user(%{
 })
 
 Enum.each(1..200, fn _ ->
-  image = "product_" <> to_string(:rand.uniform(4)) <> ".jpg"
-
-  %{
-    name: Faker.Food.dish(),
-    description: Faker.Food.description(),
-    price: :random.uniform(1000),
-    size: "small",
-    product_url: %Plug.Upload{
-      content_type: "image/png",
-      filename: "#{image}",
-      path: "priv/static/images/#{image}"
-    }
-  }
-  |> Wefood.Products.create_product()
+  insert(:product)
 end)
