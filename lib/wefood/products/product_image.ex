@@ -20,8 +20,6 @@ defmodule Wefood.Products.ProductImage do
       "products/#{product.name}"
     else
       "priv/static/uploads/products/#{product.name}"
-
     end
-
   end
 end

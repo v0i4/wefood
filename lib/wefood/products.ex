@@ -43,6 +43,5 @@ defmodule Wefood.Products do
       [_ | url] = String.split(url, "/priv/static")
       url
     end
-
   end
 end
