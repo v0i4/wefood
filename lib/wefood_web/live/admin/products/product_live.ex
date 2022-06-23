@@ -6,6 +6,7 @@ defmodule WefoodWeb.Admin.ProductLive do
   alias WefoodWeb.Admin.Products.Form
   alias WefoodWeb.Admin.Product.ProductRow
   alias WefoodWeb.Admin.Product.FilterByName
+  alias WefoodWeb.Admin.Product.Sort
 
   def mount(_p, _s, socket) do
     {:ok, socket}
