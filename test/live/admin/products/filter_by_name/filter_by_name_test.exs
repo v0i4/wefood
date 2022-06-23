@@ -26,5 +26,25 @@ defmodule WefoodWeb.Admin.Products.FilterByNameTest do
       assert has_element?(view, "[data-role=product-item][data-id=#{product2.id}]")
       refute has_element?(view, "[data-role=product-item][data-id=#{product3.id}]")
     end
+
+    test "test filter with no results", %{conn: conn} do
+      product1 = insert(:product)
+      product2 = insert(:product)
+      product3 = insert(:product)
+      user_typing = "(*&¨%¨!"
+
+      {:ok, view, html} = live(conn, Routes.admin_product_path(conn, :index))
+      assert has_element?(view, "[data-role=product-item][data-id=#{product1.id}]")
+      assert has_element?(view, "[data-role=product-item][data-id=#{product2.id}]")
+      assert has_element?(view, "[data-role=product-item][data-id=#{product3.id}]")
+
+      view
+      |> form("[data-role=filter_field]")
+      |> render_change(%{name: user_typing})
+
+      refute has_element?(view, "[data-role=product-item][data-id=#{product1.id}]")
+      refute has_element?(view, "[data-role=product-item][data-id=#{product2.id}]")
+      refute has_element?(view, "[data-role=product-item][data-id=#{product3.id}]")
+    end
   end
 end

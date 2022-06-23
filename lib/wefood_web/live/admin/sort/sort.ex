@@ -1,11 +1,15 @@
 defmodule WefoodWeb.Admin.Product.Sort do
+  @moduledoc """
+  sort component behaviour controller
+  """
   use WefoodWeb, :live_component
 
   def update(assigns, socket) do
-    socket = socket
-    |> assign(assigns)
-    |> assign_color(assigns)
-    |> assign_sort_order(assigns)
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign_color(assigns)
+      |> assign_sort_order(assigns)
 
     {:ok, socket}
   end
@@ -13,10 +17,10 @@ defmodule WefoodWeb.Admin.Product.Sort do
   defp assign_color(socket, %{sort_by: sort_by, options: %{sort_by: sort_by_options}}) do
     if sort_by == sort_by_options do
       socket
-      |>assign(color: "#ff761a")
+      |> assign(color: "#ff761a")
     else
       socket
-      |>assign(color: "#ccc")
+      |> assign(color: "#ccc")
     end
   end
 
@@ -25,12 +29,10 @@ defmodule WefoodWeb.Admin.Product.Sort do
       socket
       |> assign(icon: "sort_desc.html")
       |> assign(sort_order: :asc)
-
     else
       socket
       |> assign(icon: "sort_asc.html")
       |> assign(sort_order: :desc)
-
     end
   end
 end
