@@ -8,19 +8,6 @@ defmodule Wefood.ProductsTest do
     assert Products.list_products() == []
   end
 
-  test "list_products/1 by name" do
-    filter = "pizza"
-
-    payload = %{name: "pizza", size: "XL", price: 100, description: "margherita"}
-    {:ok, %Product{} = product} = Products.create_product(payload)
-
-    result =
-      Products.list_products(filter)
-      |> hd()
-
-    assert product.name == result.name
-  end
-
   test "get!/1" do
     payload = %{name: "pizza", size: "XL", price: 100, description: "margherita"}
     assert {:ok, %Product{} = product} = Products.create_product(payload)

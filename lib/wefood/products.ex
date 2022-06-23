@@ -5,13 +5,20 @@ defmodule Wefood.Products do
   alias Wefood.Repo
   import Ecto.Query
 
-  def list_products, do: Repo.all(Product)
+  # def list_products, do: Repo.all(Product)
 
-  def list_products(name) do
-    name = "%" <> name <> "%"
+  def list_products(params \\ []) when is_list(params) do
+    query = from(p in Product)
 
-    Product
-    |> where([p], ilike(p.name, ^name))
+    params
+    |> Enum.reduce(query, fn
+      {:name, name}, query ->
+        name = "%" <> name <> "%"
+        where(query, [q], ilike(q.name, ^name))
+
+      {:sort, %{sort_by: sort_by, sort_order: sort_order}}, query ->
+        order_by(query, [q], [{^sort_order, ^sort_by}])
+    end)
     |> Repo.all()
   end
 

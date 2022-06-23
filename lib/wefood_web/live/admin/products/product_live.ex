@@ -6,21 +6,31 @@ defmodule WefoodWeb.Admin.ProductLive do
   alias WefoodWeb.Admin.Products.Form
   alias WefoodWeb.Admin.Product.ProductRow
   alias WefoodWeb.Admin.Product.FilterByName
+  alias WefoodWeb.Admin.Product.Sort
 
   def mount(_p, _s, socket) do
     {:ok, socket}
   end
 
   def handle_params(params, _url, socket) do
+    name = params["name"] || ""
+    sort_by = (params["sort_by"] || "updated_at") |> String.to_atom()
+    sort_order = (params["sort_order"] || "desc") |> String.to_atom()
+
+    sort = %{sort_by: sort_by, sort_order: sort_order}
+
     live_action = socket.assigns.live_action
-    products = Products.list_products()
+    products = Products.list_products(name: name, sort: sort)
+
+    options = sort
 
     socket =
       socket
       |> apply_action(live_action, params)
       |> assign(products: products)
       |> assign(loading: false)
-      |> assign(name: "")
+      |> assign(name: name)
+      |> assign(options: options)
 
     {:noreply, socket}
   end
@@ -55,31 +65,35 @@ defmodule WefoodWeb.Admin.ProductLive do
     {:noreply, socket}
   end
 
-  def handle_info({:list_products, name}, socket) do
-    {:noreply, perform_filter(socket, name)}
-  end
-
   defp apply_filters(socket, name) do
     assigns = [products: [], name: name, loading: true]
     send(self(), {:list_products, name})
     assign(socket, assigns)
   end
 
-  defp perform_filter(socket, name) do
-    name
-    |> Products.list_products()
-    |> return_filter_response(socket, name)
+  def handle_info({:list_products, name}, socket) do
+    sort = socket.assigns.options
+    params = [name: name, sort: sort]
+
+    {:noreply, perform_filter(socket, params)}
   end
 
-  defp return_filter_response([] = products, socket, name) do
-    assigns = [loading: false, products: products]
+  defp perform_filter(socket, params) do
+    params
+    |> Products.list_products()
+    |> return_filter_response(socket, params)
+  end
+
+  defp return_filter_response([] = products, socket, params) do
+    assigns = [loading: false, products: [], name: params[:name], options: params[:sort]]
+    name = params[:name]
 
     socket
     |> put_flash(:info, "no results found for \"#{name}\"..")
     |> assign(assigns)
   end
 
-  defp return_filter_response(products, socket, _name) do
+  defp return_filter_response(products, socket, _params) do
     socket
     |> assign(products: products, loading: false)
   end
