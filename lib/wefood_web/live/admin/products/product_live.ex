@@ -3,11 +3,11 @@ defmodule WefoodWeb.Admin.ProductLive do
   use WefoodWeb, :live_view
   alias Wefood.Products
   alias Wefood.Products.Product
-  alias WefoodWeb.Admin.Products.Form
+  alias WefoodWeb.Admin.Product.FilterByName
   alias WefoodWeb.Admin.Product.Paginate
   alias WefoodWeb.Admin.Product.ProductRow
-  alias WefoodWeb.Admin.Product.FilterByName
   alias WefoodWeb.Admin.Product.Sort
+  alias WefoodWeb.Admin.Products.Form
 
   def mount(_p, _s, socket) do
     {:ok, socket}

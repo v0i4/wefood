@@ -1,8 +1,8 @@
 defmodule WefoodWeb.MainLive.Items do
   @moduledoc false
   use WefoodWeb, :live_component
-  alias WefoodWeb.MainLive.Items.Item
   alias Wefood.Products
+  alias WefoodWeb.MainLive.Items.Item
 
   def update(assigns, socket) do
     products = Products.list_products()
