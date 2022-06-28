@@ -5,9 +5,9 @@ defmodule Wefood.Factory do
 
   def product_factory do
     %Product{
-      name: Faker.Food.dish(),
+      name: Faker.Food.dish() <> (:rand.uniform(1_000) |> Integer.to_string()),
       description: Faker.Food.description(),
-      price: :random.uniform(1000),
+      price: :rand.uniform(1000),
       size: "small"
     }
   end
