@@ -6,6 +6,7 @@ defmodule WefoodWeb.Admin.ProductLive do
   alias WefoodWeb.Admin.Product.FilterByName
   alias WefoodWeb.Admin.Product.Paginate
   alias WefoodWeb.Admin.Product.ProductRow
+  alias WefoodWeb.Admin.Product.SelectPerPage
   alias WefoodWeb.Admin.Product.Sort
   alias WefoodWeb.Admin.Products.Form
 

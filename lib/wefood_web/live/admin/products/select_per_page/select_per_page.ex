@@ -1,26 +1,8 @@
-defmodule WefoodWeb.Admin.Product.Paginate do
+defmodule WefoodWeb.Admin.Product.SelectPerPage do
   @moduledoc """
   paginate controller
   """
   use WefoodWeb, :live_component
-
-  def page_link(
-        %{name: name, options: options, page: page, socket: socket, text: text, data_id: data_id} =
-          assigns
-      ) do
-    ~H"""
-
-      <%=
-        live_patch(text, to: Routes.admin_product_path(socket, :index,
-      page: page,
-      per_page: options.per_page,
-      sort_by: options.sort_by,
-      sort_order: options.sort_order,
-      name: name
-      ), "data-role": "paginate", "data-id": data_id) %>
-
-    """
-  end
 
   def handle_event("update-select-perpage", %{"per-page-select" => per_page_value}, socket) do
     to =
