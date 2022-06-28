@@ -1,12 +1,12 @@
-<section class="ml-20 menu container py-8 w-full" id={@id}>
-    <h1 class="text xl font-bold mb-8" data-role="items-info" data-id="all-food">All foods</h1>
-    <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16">
+<div id={@id}>
+  <section class="ml-20 menu container py-8 w-full">
+      <h1 class="text xl font-bold mb-8" data-role="items-info" data-id="all-food">All foods</h1>
+      <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16" id="products-loaded" phx-update="append">
 
-<%= for product <- @products do %>
-     <.live_component module={Item} id={"item-" <> product.id} product={product} />
-
-      <% end %>
-
-
-    </div>
-  </section>
+        <%= for product <- @products do %>
+            <.live_component module={Item} id={"item-" <> product.id} product={product} />
+        <% end %>
+      </div>
+    </section>
+  <div id="products-loading" data-page-number={@page} phx-hook="ScrollProducts" phx-target={@myself} />
+</div>
