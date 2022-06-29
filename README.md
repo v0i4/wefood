@@ -1,5 +1,8 @@
 # Wefood
 
+![image](https://user-images.githubusercontent.com/73661148/176332388-8c370c02-5d3c-43e1-b944-1425b1b1bec5.png)
+
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
