@@ -14,15 +14,6 @@ config :wefood, WefoodWeb.Endpoint, cache_static_manifest: "priv/static/cache_ma
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :wefood, Wefood.Repo,
-  username: "ba11257c-143e-46a0-80a2-77980cf44781-user",
-  password: "pw-b4c32d0d-25b7-4b3d-aaa9-181dcff22fb7",
-  hostname: "postgres-free-tier-v2020.gigalixir.com",
-  database: "ba11257c-143e-46a0-80a2-77980cf44781",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 2
-
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
