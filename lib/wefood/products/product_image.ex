@@ -15,11 +15,11 @@ defmodule Wefood.Products.ProductImage do
     end
   end
 
-  def storage_dir(_, {file, product}) do
-    if Mix.env() == :prod do
-      "products/#{product.name}"
-    else
-      "priv/static/uploads/products/#{product.name}"
-    end
+  def storage_dir(_, {_file, product}) do
+    # if Mix.env() == :prod do
+    #  "products/#{product.name}"
+    # else
+    "priv/static/uploads/products/#{product.name}"
+    # end
   end
 end
