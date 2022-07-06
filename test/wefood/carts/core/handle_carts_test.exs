@@ -110,5 +110,20 @@ defmodule Wefood.Carts.Core.HandleCartsTest do
       assert Money.new(0) ==
                cart.total_price
     end
+
+    test "should add two different items in the smae cart" do
+      product = insert(:product)
+      product_2 = insert(:product)
+
+      cart =
+        @starting_cart
+        |> add(product)
+        |> add(product_2)
+
+      assert 2 == cart.total_qty
+
+      assert Money.add(product.price, product_2.price) ==
+               cart.total_price
+    end
   end
 end
