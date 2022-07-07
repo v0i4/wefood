@@ -15,9 +15,11 @@ defmodule Wefood.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Wefood.PubSub},
       # Start the Endpoint (http/https)
-      WefoodWeb.Endpoint
+      WefoodWeb.Endpoint,
       # Start a worker by calling: Wefood.Worker.start_link(arg)
       # {Wefood.Worker, arg}
+      # CartsSession
+      Wefood.Carts.Boundary.CartSession
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
