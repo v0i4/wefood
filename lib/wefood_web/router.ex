@@ -21,6 +21,7 @@ defmodule WefoodWeb.Router do
     pipe_through :browser
 
     live "/", MainLive, :index
+    live "/cart", CartLive, :index
   end
 
   # coveralls-ignore-start
