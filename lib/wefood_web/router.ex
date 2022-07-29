@@ -20,8 +20,10 @@ defmodule WefoodWeb.Router do
   scope "/", WefoodWeb do
     pipe_through :browser
 
-    live "/", MainLive, :index
-    live "/cart", CartLive, :index
+    live_session :create_cart_session, on_mount: LiveSession.Cart do
+      live "/", MainLive, :index
+      live "/cart", CartLive, :index
+    end
   end
 
   # coveralls-ignore-start
