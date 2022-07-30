@@ -31,7 +31,7 @@ let csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, {
-  params: { _csrf_token: csrfToken },
+  params: { _csrf_token: csrfToken, cart_id: sessionStorage.getItem("cart_id") },
   hooks: Hooks,
 });
 
